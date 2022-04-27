@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -63,10 +64,32 @@ Widget titleSection = Padding(
   ),
 );
 
-Widget buttonSection = Container(
-  height: 250,
-  color: Colors.green,
+Widget buttonSection = Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    _buildButtonColumn(icon: Icons.thumb_up, label: "like"),
+    _buildButtonColumn(icon: Icons.comment, label: "Comment"),
+    _buildButtonColumn(icon: Icons.share, label: "Share"),
+  ],
 );
+
+Column _buildButtonColumn({required IconData icon, required String label}) {
+  var icColors = Colors.grey.shade500;
+  return Column(
+    children: [
+      Icon(icon, color: icColors),
+      Container(
+        margin: EdgeInsets.only(top: 20),
+        child: Text(
+          label,
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 13, color: icColors),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget courseSection = Container(
   height: 250,
   color: Colors.yellow,
