@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +22,10 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            headerSection, titleSection, buttonSection, courseSection,
+            headerSection,
+            titleSection,
+            buttonSection,
+            courseSection,
           ],
         ),
       ),
@@ -28,8 +33,41 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Widget headerSection = Container(height: 250, color: Colors.blue,);
-Widget titleSection = Container(height: 250, color: Colors.red,);
-Widget buttonSection = Container(height: 250, color: Colors.green,);
-Widget courseSection = Container(height: 250, color: Colors.yellow,);
+Widget headerSection = Image.network(
+    'https://cdn.dribbble.com/users/1455469/screenshots/8929931/dribbble-fitkiddo-ios-app-shot-home_4x.png');
 
+Widget titleSection = Padding(
+  padding: EdgeInsets.all(50),
+  child: Row(
+    children: [
+      Expanded(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Flutter Mobile Apps",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text("Bangkok, Thailand"),
+        ],
+      )),
+      Icon(
+        Icons.thumb_up,
+        color: Colors.blue,
+      ),
+      Container(
+        margin: EdgeInsets.only(left: 8),
+        child: Text("99"),
+      )
+    ],
+  ),
+);
+
+Widget buttonSection = Container(
+  height: 250,
+  color: Colors.green,
+);
+Widget courseSection = Container(
+  height: 250,
+  color: Colors.yellow,
+);
