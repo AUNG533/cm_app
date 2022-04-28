@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 void main() {
   runApp(const MyApp());
@@ -91,6 +91,41 @@ Column _buildButtonColumn({required IconData icon, required String label}) {
 }
 
 Widget courseSection = Container(
-  height: 250,
-  color: Colors.yellow,
+  margin: EdgeInsets.only(top: 70),
+  padding: EdgeInsets.all(8),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: EdgeInsets.all(8),
+        child: Text("Mobiles & Web Course"),
+      ),
+      SizedBox(
+        height: 120,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            _buildCardListView(
+                url:
+                    'https://www.codemobiles.com/biz/images/banner_pospos.jpg?dummy=1626693188'),
+            _buildCardListView(
+                url:
+                    'https://www.codemobiles.com/biz/images/banner_app.jpg?dummy=1626693213'),
+            _buildCardListView(
+                url:
+                    'https://www.codemobiles.com/biz/images/ard_shop_side_banner_v2.jpg?dummy=1626693396'),
+            _buildCardListView(
+                url:
+                    'https://www.codemobiles.com/biz/images/job.jpg?m=1626693621'),
+          ],
+        ),
+      ),
+    ],
+  ),
 );
+
+Card _buildCardListView({required String url}) {
+  return Card(
+    child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: url),
+  );
+}
